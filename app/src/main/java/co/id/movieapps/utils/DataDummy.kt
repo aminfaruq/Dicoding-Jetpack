@@ -1,10 +1,8 @@
 package co.id.movieapps.utils
 
-import co.id.movieapps.data.MovieEntity
-import co.id.movieapps.data.TvShowEntity
-
 object DataDummy {
 
+    /*
     private const val imageUrl = "https://image.tmdb.org/t/p/w185/"
 
     fun generateDummyMovie(): ArrayList<MovieEntity> {
@@ -14,7 +12,7 @@ object DataDummy {
 
         movies.add(
             MovieEntity(
-                "512200",
+                512200,
                 "Jumanji: The Next Level",
                 "In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the world's most dangerous game.",
                 "${imageUrl}l4iknLOenijaB85Zyb5SxH1gGz8.jpg"
@@ -24,7 +22,7 @@ object DataDummy {
 
         movies.add(
             MovieEntity(
-                "419704",
+                419704,
                 "Ad Astra",
                 "The near future, a time when both hope and hardships drive humanity to look to the stars and beyond. While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.",
                 "${imageUrl}xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg"
@@ -33,7 +31,7 @@ object DataDummy {
 
         movies.add(
             MovieEntity(
-                "330457",
+                330457,
                 "Frozen II",
                 "Elsa, Anna, Kristoff and Olaf head far into the forest to learn the truth about an ancient mystery of their kingdom.",
                 "${imageUrl}pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg"
@@ -43,7 +41,7 @@ object DataDummy {
 
         movies.add(
             MovieEntity(
-                "492188",
+                492188,
                 "Marriage Story",
                 "A stage director and an actor struggle through a grueling, coast-to-coast divorce that pushes them to their personal extremes.",
                 "${imageUrl}bm6zKJjKYKrIy3dcnOLk0kF85cl.jpg"
@@ -52,7 +50,7 @@ object DataDummy {
 
         movies.add(
             MovieEntity(
-                "449924",
+                449924,
                 "葉問4",
                 "Ip Man 4 is an upcoming Hong Kong biographical martial arts film directed by Wilson Yip and produced by Raymond Wong. It is the fourth in the Ip Man film series based on the life of the Wing Chun grandmaster of the same name and features Donnie Yen reprising the role. The film began production in April 2018 and ended in July the same year.",
                 "${imageUrl}vn94LlNrbUWIZZyAdmvUepFBeaY.jpg"
@@ -241,4 +239,6 @@ object DataDummy {
         }
         return null
     }
+
+     */
 }

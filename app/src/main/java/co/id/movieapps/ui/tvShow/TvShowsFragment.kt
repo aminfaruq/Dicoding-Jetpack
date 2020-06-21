@@ -6,24 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.id.movieapps.R
-import co.id.movieapps.data.TvShowEntity
-import co.id.movieapps.ui.detail.DetailActivity
+import co.id.movieapps.data.entity.domain.tv.TvShowDomain
+import co.id.movieapps.ui.base.LoadMoreItemView
+import co.id.movieapps.ui.detail.tv.DetailTvActivity
+import co.id.movieapps.utils.PaginationScrollListener
+import co.id.movieapps.utils.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.tv_shows_fragment.*
+import org.koin.android.ext.android.inject
 
 class TvShowsFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TvShowsFragment()
-    }
-
-    private lateinit var viewModel: TvShowsViewModel
+    private val viewModel: TvShowsViewModel by inject()
     private val adapterTvShow = GroupAdapter<ViewHolder>()
-
+    private var page = 1
+    private var isLoadMore = false
+    private var isLastPage = false
+    private var loadMoreItemView = LoadMoreItemView()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,26 +37,88 @@ class TvShowsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        )[TvShowsViewModel::class.java]
 
-        val tvShow = viewModel.getTvShow()
-        tvShow.map {
-            adapterTvShow.add(TvShowsListItem(tvShow, object : TvShowsListItem.OnItemClick {
-                override fun onClick(item: TvShowEntity) {
-                    val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_TV, item.tvId)
-                    startActivity(intent)
-                }
-            }))
+        progressBarHolderLoadingCL.visibility = View.VISIBLE
+
+        viewModel.tvState.observe(this, startObserver)
+        viewModel.getTvShow(page)
+        setupRV()
+
+    }
+
+    private fun setupRV() {
+        val linearLayout = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rv_tvShow.apply {
+            layoutManager = linearLayout
+            adapter = adapterTvShow
         }
 
-        rv_tvShow.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = adapterTvShow
+        rv_tvShow.addOnScrollListener(object : PaginationScrollListener(linearLayout) {
+            override fun isLastPage(): Boolean {
+                return isLastPage
+            }
 
+            override fun isLoading(): Boolean {
+                return isLoadMore
+            }
+
+            override fun loadMoreItems() {
+                isLoadMore = true
+                page++
+
+                viewModel.getTvShow(page)
+            }
+        })
+    }
+
+    private val startObserver = Observer<TvShowState> { tvShowState ->
+        when (tvShowState) {
+            is LoadingState -> {
+                if (isLoadMore) {
+                    adapterTvShow.add(loadMoreItemView)
+                }
+            }
+
+            is TvShowDataLoadedState -> {
+                progressBarHolderLoadingCL.visibility = View.GONE
+                if (isLoadMore) {
+                    adapterTvShow.remove(loadMoreItemView)
+                    isLoadMore = false
+                }
+
+                if (page == 1) {
+                    adapterTvShow.clear()
+                }
+
+                tvShowState.tvShowDomain.map {
+                    adapterTvShow.add(TvShowsListItem(it, object : TvShowsListItem.OnItemClick {
+                        override fun onClick(item: TvShowDomain) {
+                            val intent = Intent(context, DetailTvActivity::class.java)
+                            intent.putExtra(DetailTvActivity.EXTRA_TV, item.id)
+                            startActivity(intent)
+                        }
+                    }))
+                }
+            }
+
+            is DataNotFoundState -> {
+                adapterTvShow.clear()
+            }
+
+            is LastPageState -> {
+                if (isLoadMore) {
+                    adapterTvShow.remove(loadMoreItemView)
+                    isLoadMore = false
+                    if (!isLastPage) {
+                        toast(context!!, "Last Page")
+                        isLastPage = true
+                    }
+                }
+            }
+
+            is ErrorState -> {
+                progressBarHolderLoadingCL.visibility = View.GONE
+            }
         }
     }
 

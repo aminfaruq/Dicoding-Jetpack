@@ -36,13 +36,20 @@ ext {
     junitVersion = '4.12'
     espressoVersion = '3.1.0'
 
-    materialVersion = '1.0.0'
+    materialVersion = '1.2.0-alpha03'
     recyclerViewVersion = '1.1.0'
     glideVersion = '4.10.0'
     androidXTestVersion = '1.2.0'
+    koin_version = '2.0.1'
+
+    mockitoVersion = '2.23.4'
+    mockitoKotlinVersion = '2.1.0'
+    idleResourceVersion = '3.2.0'
 
 
     archLifecycleVersion = '2.1.0'
+
+    retrofitVersion = '2.5.0'
 
 }
 

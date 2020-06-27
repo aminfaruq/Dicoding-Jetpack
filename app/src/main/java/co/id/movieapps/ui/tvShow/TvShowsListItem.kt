@@ -2,7 +2,7 @@ package co.id.movieapps.ui.tvShow
 
 import co.id.movieapps.R
 import co.id.movieapps.data.entity.domain.tv.TvShowDomain
-import co.id.movieapps.utils.loadImage
+import co.id.movieapps.utils.ui.loadImage
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.item_row.view.*

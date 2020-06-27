@@ -3,6 +3,7 @@ package co.id.movieapps.ui.detail.movie
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import co.id.movieapps.data.entity.domain.movie.GenresItemDomain
 import co.id.movieapps.data.entity.domain.movie.ResponseDetailMovieDomain
+import co.id.movieapps.data.local.dao.MoviesDao
 import co.id.movieapps.data.repository.DetailRepository
 import co.id.movieapps.data.repository.GenreMovieRepository
 import co.id.movieapps.ui.base.Constant
@@ -16,6 +17,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
+import java.util.concurrent.Executor
 
 @RunWith(MockitoJUnitRunner::class)
 class DetailViewModelTest {
@@ -38,10 +40,17 @@ class DetailViewModelTest {
     @Mock
     private lateinit var repository: DetailRepository
 
+    @Mock
+    private lateinit var movieDao: MoviesDao
+
+    @Mock
+    private lateinit var executor: Executor
+
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = DetailViewModel(repository, genreRepository)
+        viewModel = DetailViewModel(repository, genreRepository, movieDao, executor)
     }
 
     @Test

@@ -12,8 +12,8 @@ import co.id.movieapps.R
 import co.id.movieapps.data.entity.domain.tv.TvShowDomain
 import co.id.movieapps.ui.base.LoadMoreItemView
 import co.id.movieapps.ui.detail.tv.DetailTvActivity
-import co.id.movieapps.utils.PaginationScrollListener
-import co.id.movieapps.utils.toast
+import co.id.movieapps.utils.room.PaginationScrollListener
+import co.id.movieapps.utils.ui.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.tv_shows_fragment.*

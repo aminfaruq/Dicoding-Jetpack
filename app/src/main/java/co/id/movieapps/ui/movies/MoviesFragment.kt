@@ -12,8 +12,8 @@ import co.id.movieapps.R
 import co.id.movieapps.data.entity.domain.movie.MovieDomain
 import co.id.movieapps.ui.base.LoadMoreItemView
 import co.id.movieapps.ui.detail.movie.DetailActivity
-import co.id.movieapps.utils.PaginationScrollListener
-import co.id.movieapps.utils.toast
+import co.id.movieapps.utils.room.PaginationScrollListener
+import co.id.movieapps.utils.ui.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.movies_fragment.*

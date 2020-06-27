@@ -1,4 +1,4 @@
-package co.id.movieapps.utils
+package co.id.movieapps.utils.room
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package co.id.movieapps.utils
+package co.id.movieapps.utils.espresso
 
 import androidx.test.espresso.IdlingResource
 import androidx.test.espresso.idling.CountingIdlingResource
@@ -16,5 +16,6 @@ object EspressoIdlingResource {
         espressoTestIdlingResource.decrement()
     }
 
-    fun getEspressoIdlingResourceMainActivity(): IdlingResource = espressoTestIdlingResource
+    fun getEspressoIdlingResourceMainActivity(): IdlingResource =
+        espressoTestIdlingResource
 }

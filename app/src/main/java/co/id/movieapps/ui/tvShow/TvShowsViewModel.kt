@@ -5,8 +5,8 @@ import co.id.movieapps.data.entity.domain.tv.TvShowDomain
 import co.id.movieapps.data.repository.TvShowRepository
 import co.id.movieapps.ui.base.BaseViewModel
 import co.id.movieapps.ui.base.Constant
-import co.id.movieapps.utils.EspressoIdlingResource
-import co.id.movieapps.utils.RxUtils
+import co.id.movieapps.utils.espresso.EspressoIdlingResource
+import co.id.movieapps.utils.ui.RxUtils
 
 sealed class TvShowState
 data class ErrorState(var msg: String?) : TvShowState()

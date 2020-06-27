@@ -1,4 +1,4 @@
-package co.id.movieapps.utils
+package co.id.movieapps.utils.ui
 
 import android.content.Context
 import android.widget.ImageView

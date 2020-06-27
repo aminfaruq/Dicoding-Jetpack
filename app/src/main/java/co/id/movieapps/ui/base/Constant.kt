@@ -6,4 +6,6 @@ object Constant {
     const val LANG = "en-US"
     const val SORT_BY = "popularity.desc"
     const val API_KEY = "9351b653885866a95fcef04c4f0c7426"
+    val NAME_DATABASE = "db_movie"
+
 }

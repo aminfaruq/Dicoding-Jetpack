@@ -3,6 +3,7 @@ package co.id.movieapps.ui.detail.tv
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import co.id.movieapps.data.entity.domain.movie.GenresItemDomain
 import co.id.movieapps.data.entity.domain.tv.ResponseDetailTvDomain
+import co.id.movieapps.data.local.dao.TvShowDao
 import co.id.movieapps.data.repository.DetailTvRepository
 import co.id.movieapps.data.repository.GenreTvRepository
 import co.id.movieapps.ui.base.Constant
@@ -16,6 +17,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
+import java.util.concurrent.Executor
 
 @RunWith(MockitoJUnitRunner::class)
 class DetailTvViewModelTest {
@@ -37,10 +39,16 @@ class DetailTvViewModelTest {
     @Mock
     private lateinit var tvRepository: DetailTvRepository
 
+    @Mock
+    private lateinit var tvShowDao: TvShowDao
+
+    @Mock
+    private lateinit var executor: Executor
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        viewModel = DetailTvViewModel(tvRepository, genreRepository)
+        viewModel = DetailTvViewModel(tvRepository, genreRepository, tvShowDao, executor)
     }
 
     @Test

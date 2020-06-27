@@ -12,8 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.detail.tv.DetailTvActivity"></activity>
-        <activity android:name=".ui.detail.movie.DetailActivity" />
+        <activity
+            android:name=".ui.favorite.FavoriteActivity"
+            android:parentActivityName=".ui.home.MainActivity" />
+        <activity
+            android:name=".ui.detail.tv.DetailTvActivity"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".ui.detail.movie.DetailActivity"
+            android:theme="@style/LoginTheme" />
         <activity android:name=".ui.home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

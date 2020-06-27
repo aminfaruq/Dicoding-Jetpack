@@ -12,7 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.rule.ActivityTestRule
 import co.id.movieapps.R
-import co.id.movieapps.utils.EspressoIdlingResource
+import co.id.movieapps.utils.espresso.EspressoIdlingResource
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

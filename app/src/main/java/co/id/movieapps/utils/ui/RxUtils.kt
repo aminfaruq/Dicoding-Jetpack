@@ -1,4 +1,4 @@
-package co.id.movieapps.utils
+package co.id.movieapps.utils.ui
 
 import io.reactivex.ObservableTransformer
 import io.reactivex.SingleTransformer
